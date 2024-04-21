@@ -1,75 +1,30 @@
 import { styled } from "styled-components"
 
 interface CustomButtonProps {
-  variant: "primary" | "secondary" | "tertiary" | "gray"
+  variant: "primary" | "secondary"
 }
 
 export const Container = styled.button<CustomButtonProps>`
   display: flex;
-  padding: 12px 40px;
+  max-height: 32px;
+  padding: 4px 32px;
   flex-direction: row;
   cursor: pointer;
   justify-content: center;
   align-items: center;
   gap: 4px;
-  align-self: stretch;
-
   border-radius: 8px;
-  background-color: ${(props) => {
-    switch (props.variant) {
-      case "primary":
-        return props.theme?.primary100
-      case "secondary":
-        return props.theme?.secondary100
-      case "tertiary":
-        return "transparent"
-      case "gray":
-        return props.theme?.primary60
-      default:
-        return props.theme?.primary100
-    }
-  }};
+  background-color: ${(props) =>
+    props.variant === "primary" ? "#2797BA" : "transparent"};
 
-  border: 2px solid
-    ${(props) =>
-      props.variant === "tertiary" ? props.theme?.secondary100 : "transparent"};
-  color: ${(props) => {
-    switch (props.variant) {
-      case "tertiary":
-        return props.theme?.secondary100
-      case "gray":
-        return props.theme?.primary100
-      default:
-        return "#FFF"
-    }
-  }};
+  border: 1px solid
+    ${(props) => (props.variant === "primary" ? "#2797BA" : "#7D8C94")};
+  color: ${(props) => (props.variant === "primary" ? "#FFF" : "#7D8C94")};
 
   &:hover {
     cursor: pointer;
     transition: 0.4s;
-    background-color: ${(props) => {
-      switch (props.variant) {
-        case "primary":
-          return props.theme?.primary90
-        case "secondary":
-          return props.theme?.secondary90
-        case "tertiary":
-          return "#FFF"
-        case "gray":
-          return props.theme?.primary90
-        default:
-          return props.theme?.primary100
-      }
-    }};
-    color: ${(props) =>
-      props.variant === "tertiary"
-        ? props.theme?.secondary100
-        : "#FFF"} !important;
-
-    span {
-      transition: 0.4s;
-      color: ${(props) => (props.variant === "gray" ? "#fff" : "")} !important;
-    }
+    opacity: 0.7;
   }
 
   &:disabled {
@@ -78,19 +33,9 @@ export const Container = styled.button<CustomButtonProps>`
   }
 
   span {
-    color: ${(props) => {
-      switch (props.variant) {
-        case "tertiary":
-          return props.theme?.secondary100
-        case "gray":
-          return props.theme?.primary100
-        default:
-          return "#FFF"
-      }
-    }} !important;
-
+    color: ${(props) => (props.variant === "primary" ? "#FFF" : "#7D8C94")};
     text-align: center;
-    font-family: Open Sans;
+
     font-size: 16px;
     font-style: normal;
     font-weight: 700;

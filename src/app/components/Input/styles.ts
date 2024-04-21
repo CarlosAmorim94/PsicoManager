@@ -59,7 +59,7 @@ export const FieldContainerToken = styled.div`
 export const Title = styled.label`
   width: auto;
   color: ${(props) => props.theme.secondary80};
-  font-family: Open Sans;
+
   font-size: 14px;
   font-style: normal;
   font-weight: 700;
@@ -90,7 +90,6 @@ export const TextareaField = styled.textarea<{
         ? props.theme[variants[props.$variant].placeholder]
         : "gray"};
 
-    font-family: Open Sans;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -124,7 +123,6 @@ export const InputField = styled.input<{ $variant?: "primary" | "secondary" }>`
         ? props.theme[variants[props.$variant].placeholder]
         : "gray"};
 
-    font-family: Open Sans;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -159,7 +157,6 @@ export const InputFieldToken = styled.input<{
         ? props.theme[variants[props.$variant].placeholder]
         : "gray"};
 
-    font-family: Open Sans;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -195,7 +192,7 @@ export const ToggleIcon = styled.i`
 `
 export const Error = styled.p`
   color: ${(props) => props.theme.error};
-  font-family: Open Sans;
+
   font-size: 12px;
   font-style: normal;
   font-weight: 400;

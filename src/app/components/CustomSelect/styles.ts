@@ -39,7 +39,7 @@ export const DropdownButtonInput = styled.button<DropdownButtonProps>`
     align-items: center;
     padding: 6px 0;
     color: ${(props) => props.theme?.primary90};
-    font-family: Open Sans;
+
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -104,7 +104,7 @@ export const DropdownItemInput = styled.li`
 export const Title = styled.label`
   width: fit-content;
   color: ${(props) => props.theme.secondary80};
-  font-family: Open Sans;
+
   font-size: 14px;
   font-style: normal;
   font-weight: 700;
