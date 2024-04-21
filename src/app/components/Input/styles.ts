@@ -10,7 +10,6 @@ export const InputContainer = styled.div`
 export const Title = styled.label`
   font-size: 14px;
   font-style: normal;
-  font-weight: 700;
   line-height: normal;
   display: flex;
   flex-direction: row;

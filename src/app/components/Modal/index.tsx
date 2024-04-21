@@ -1,8 +1,6 @@
 "use client"
-import { useWindowSize } from "@/app/utils/Hooks/useWindowSize"
 import { FC, useEffect, useState } from "react"
 import { Advisement } from "../Advisement"
-import { CustomButton } from "../CustomButton"
 import { CustomSelect } from "../CustomSelect"
 import { Messages } from "../ModalSteeps/Messages"
 import { Payment } from "../ModalSteeps/Payment"
@@ -10,11 +8,11 @@ import { UserData } from "../ModalSteeps/UserData"
 import { CloseX } from "../SVG/CloseX"
 import { SteepsStatus } from "../SteepsStatus"
 import {
-  ButtonArea,
   CloseModal,
   Container,
   HeaderModal,
   Overlay,
+  Subtitle,
   TitleInformation,
 } from "./styles"
 
@@ -26,8 +24,7 @@ interface ModalProps {
 export type SteepProps = "userData" | "messages" | "payment"
 
 export const Modal: FC<ModalProps> = ({ isOpen, setIsOpen }) => {
-  const { isMobile } = useWindowSize()
-  const [steep, setSteep] = useState<SteepProps>("userData")
+  const [steep, setSteep] = useState<SteepProps>("messages")
 
   useEffect(() => {
     const handleEsc = (event: { keyCode: number }) => {
@@ -41,12 +38,6 @@ export const Modal: FC<ModalProps> = ({ isOpen, setIsOpen }) => {
     }
   }, [])
 
-  useEffect(() => {
-    isOpen && !isMobile
-      ? (document.body.style.overflow = "hidden")
-      : (document.body.style.overflow = "auto")
-  }, [isOpen])
-
   return (
     <Overlay isOpen={isOpen}>
       <Container>
@@ -58,7 +49,9 @@ export const Modal: FC<ModalProps> = ({ isOpen, setIsOpen }) => {
             </CloseModal>
           </HeaderModal>
           <SteepsStatus steep={steep} />
-          <h3>Preencha os itens a seguir para configurar o PsicoBank</h3>
+          <Subtitle>
+            Preencha os itens a seguir para configurar o PsicoBank
+          </Subtitle>
           {steep === "userData" && <Advisement />}
           <CustomSelect
             label="Profissional"
@@ -74,20 +67,6 @@ export const Modal: FC<ModalProps> = ({ isOpen, setIsOpen }) => {
           {steep === "messages" && <Messages />}
           {steep === "payment" && <Payment />}
         </div>
-        <ButtonArea>
-          <CustomButton
-            variant="secondary"
-            type={"button"}
-            onClick={() => setIsOpen(false)}
-            label={"Cancelar"}
-          />
-          <CustomButton
-            type={"button"}
-            variant="primary"
-            label={"Confirmar"}
-            onClick={() => setSteep("messages")}
-          />
-        </ButtonArea>
       </Container>
     </Overlay>
   )

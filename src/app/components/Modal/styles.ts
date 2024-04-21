@@ -11,16 +11,15 @@ export const Overlay = styled.div<Props>`
   position: absolute;
   z-index: 999;
   background: rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
 `
 
 export const Container = styled.form`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   background-color: white;
   width: 100%;
   max-width: 880px;
+  height: fit-content;
   border-radius: 4px;
   justify-content: center;
   align-items: center;
@@ -28,6 +27,7 @@ export const Container = styled.form`
   z-index: 999999;
   box-shadow: 0px 0px 32px 0px rgba(125, 140, 148, 0.5);
   padding: 32px;
+  margin: 32px;
 `
 
 export const CloseModal = styled.button`
@@ -72,18 +72,18 @@ export const TitleInformation = styled.div`
   }
 `
 
+export const Subtitle = styled.h3`
+  margin: 16px 0;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: left;
+`
+
 export const HeaderModal = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
-`
-
-export const ButtonArea = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  gap: 16px;
 `

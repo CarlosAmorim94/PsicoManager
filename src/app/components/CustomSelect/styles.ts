@@ -14,11 +14,11 @@ export const DropdownWrapperInput = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
   background: white;
 `
 
 export const DropdownButtonInput = styled.button<DropdownButtonProps>`
+  margin-top: 4px;
   display: flex;
   width: 100%;
   align-items: center;
