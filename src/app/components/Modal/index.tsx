@@ -4,6 +4,9 @@ import { FC, useEffect, useState } from "react"
 import { Advisement } from "../Advisement"
 import { CustomButton } from "../CustomButton"
 import { CustomSelect } from "../CustomSelect"
+import { Messages } from "../ModalSteeps/Messages"
+import { Payment } from "../ModalSteeps/Payment"
+import { UserData } from "../ModalSteeps/UserData"
 import { CloseX } from "../SVG/CloseX"
 import { SteepsStatus } from "../SteepsStatus"
 import {
@@ -67,9 +70,9 @@ export const Modal: FC<ModalProps> = ({ isOpen, setIsOpen }) => {
           />
         </TitleInformation>
         <div>
-          {steep === "userData" && <div>User Data</div>}
-          {steep === "messages" && <div>Messages</div>}
-          {steep === "payment" && <div>Payment</div>}
+          {steep === "userData" && <UserData />}
+          {steep === "messages" && <Messages />}
+          {steep === "payment" && <Payment />}
         </div>
         <ButtonArea>
           <CustomButton
