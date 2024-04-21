@@ -35,7 +35,7 @@ const accountTypes = [
 export const UserData: FC = () => {
   return (
     <Container>
-      <Form>
+      <Form id="userDataForm">
         <BankArea>
           <CustomSelect
             label="Banco"

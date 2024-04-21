@@ -24,7 +24,7 @@ interface ModalProps {
 export type SteepProps = "userData" | "messages" | "payment"
 
 export const Modal: FC<ModalProps> = ({ isOpen, setIsOpen }) => {
-  const [steep, setSteep] = useState<SteepProps>("messages")
+  const [steep, setSteep] = useState<SteepProps>("userData")
 
   useEffect(() => {
     const handleEsc = (event: { keyCode: number }) => {

@@ -16,7 +16,7 @@ export const Messages: FC = () => {
           próximo passo.
         </p>
       </Info>
-      <Form>
+      <Form id="messagesForm">
         <EmailArea>
           <div className="firstLine">
             <CustomSelect

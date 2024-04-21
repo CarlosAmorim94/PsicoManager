@@ -20,7 +20,9 @@ export const SteepsStatus: FC<SteepsStatusProps> = ({ steep = "userData" }) => {
           <StatusBall isSelected={steep === "userData"} />
         )}
       </Steeps>
-      <HorizontalLine isSelected={steep === "messages"} />
+      <HorizontalLine
+        isSelected={steep === "messages" || steep === "payment"}
+      />
       <Steeps isSelected={steep === "messages"}>
         {steep === "payment" ? (
           <Checked />
