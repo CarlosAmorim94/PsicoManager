@@ -1,9 +1,9 @@
 "use client"
 import { useWindowSize } from "@/app/utils/Hooks/useWindowSize"
-import { FC, useEffect } from "react"
+import { FC, useEffect, useState } from "react"
+import { Advisement } from "../Advisement"
 import { CustomButton } from "../CustomButton"
-import { CustomSelect } from "../CustomSelect"
-import { Input } from "../Input"
+import { SteepsStatus } from "../SteepsStatus"
 import {
   ButtonArea,
   CloseModal,
@@ -18,8 +18,11 @@ interface ModalProps {
   setIsOpen: (value: boolean) => void
 }
 
+export type SteepProps = "userData" | "messages" | "payment"
+
 export const Modal: FC<ModalProps> = ({ isOpen, setIsOpen }) => {
   const { isMobile } = useWindowSize()
+  const [steep, setSteep] = useState<SteepProps>("userData")
 
   useEffect(() => {
     const handleEsc = (event: { keyCode: number }) => {
@@ -49,19 +52,15 @@ export const Modal: FC<ModalProps> = ({ isOpen, setIsOpen }) => {
               X
             </CloseModal>
           </HeaderModal>
-          <div>Status</div>
+          <SteepsStatus steep={steep} />
           <h3>Preencha os itens a seguir para configurar o PsicoBank</h3>
-          <div>Advertência</div>
-          <Input label={"Profissional"} />
-          <CustomSelect
-            options={[
-              { value: "1", label: "1" },
-              { value: "2", label: "2" },
-            ]}
-            onChange={(e) => console.log(e)}
-          />
+          {steep === "userData" && <Advisement />}
         </TitleInformation>
-        MODAAAAAAAAAAAAAAAAL
+        <div>
+          {steep === "userData" && <div>User Data</div>}
+          {steep === "messages" && <div>Messages</div>}
+          {steep === "payment" && <div>Payment</div>}
+        </div>
         <ButtonArea>
           <CustomButton
             variant="secondary"
