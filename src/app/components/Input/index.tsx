@@ -11,15 +11,13 @@ type InputProps = InputHTMLAttributes<HTMLInputElement> & {
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ label, error, type = "text", isRequired = false, ...rest }, ref) => {
     return (
-      <>
-        <InputContainer>
-          <Title>
-            {label}: {isRequired ? <Required>*</Required> : null}
-          </Title>
-          <InputField type={type} {...rest} ref={ref} />
-        </InputContainer>
+      <InputContainer>
+        <Title>
+          {label}: {isRequired ? <Required>*</Required> : null}
+        </Title>
+        <InputField type={type} {...rest} ref={ref} />
         {error && <Error>{error}</Error>}
-      </>
+      </InputContainer>
     )
   }
 )

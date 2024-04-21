@@ -67,15 +67,13 @@ export const InputMasked = forwardRef<HTMLInputElement, InputMaskedProps>(
     )
 
     return (
-      <>
-        <InputContainer>
-          <Title>
-            {label}: {isRequired ? <Required>*</Required> : null}
-          </Title>
-          <InputField {...rest} ref={ref} onKeyUp={handleKeyUp} />
-        </InputContainer>
+      <InputContainer>
+        <Title>
+          {label}: {isRequired ? <Required>*</Required> : null}
+        </Title>
+        <InputField {...rest} ref={ref} onKeyUp={handleKeyUp} />
         {error && <Error>{error}</Error>}
-      </>
+      </InputContainer>
     )
   }
 )
