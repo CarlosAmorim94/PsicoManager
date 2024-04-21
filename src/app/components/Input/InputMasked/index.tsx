@@ -9,22 +9,15 @@ import {
   phone,
   rg,
   uf,
-} from "@utils/masks"
+} from "@/app/utils/masks"
 import { InputHTMLAttributes, forwardRef, useCallback } from "react"
 
-import {
-  Error,
-  FieldContainer,
-  InputContainer,
-  InputField,
-  Title,
-} from "../styles"
+import { Error, InputContainer, InputField, Required, Title } from "../styles"
 
 type InputMaskedProps = InputHTMLAttributes<HTMLInputElement> & {
-  $variant?: "primary" | "secondary"
   label: string
-  hasBorder?: boolean
   error?: string
+  isRequired?: boolean
   mask:
     | "cep"
     | "rg"
@@ -39,10 +32,7 @@ type InputMaskedProps = InputHTMLAttributes<HTMLInputElement> & {
 }
 
 export const InputMasked = forwardRef<HTMLInputElement, InputMaskedProps>(
-  (
-    { $variant = "primary", label, error, mask, hasBorder = true, ...rest },
-    ref
-  ) => {
+  ({ label, error, mask, isRequired = false, ...rest }, ref) => {
     const handleKeyUp = useCallback(
       (event: React.FormEvent<HTMLInputElement>) => {
         if (mask === "cep") {
@@ -78,16 +68,11 @@ export const InputMasked = forwardRef<HTMLInputElement, InputMaskedProps>(
 
     return (
       <>
-        <InputContainer $variant={$variant} hasBorder={hasBorder}>
-          <Title>{label}</Title>
-          <FieldContainer>
-            <InputField
-              $variant={$variant}
-              onKeyUp={handleKeyUp}
-              {...rest}
-              ref={ref}
-            />
-          </FieldContainer>
+        <InputContainer>
+          <Title>
+            {label}: {isRequired ? <Required>*</Required> : null}
+          </Title>
+          <InputField {...rest} ref={ref} onKeyUp={handleKeyUp} />
         </InputContainer>
         {error && <Error>{error}</Error>}
       </>

@@ -20,14 +20,14 @@ export const Container = styled.form`
   transform: translate(-50%, -50%);
   background-color: white;
   width: 100%;
-  max-width: 1000px;
-  border-radius: 8px;
+  max-width: 880px;
+  border-radius: 4px;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   z-index: 999999;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
-  padding: 26px 20px;
+  box-shadow: 0px 0px 32px 0px rgba(125, 140, 148, 0.5);
+  padding: 32px;
 `
 
 export const CloseModal = styled.button`
@@ -43,8 +43,7 @@ export const TitleInformation = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
 
   h2 {
     font-size: 24px;
@@ -54,15 +53,20 @@ export const TitleInformation = styled.div`
   }
 
   h3 {
-    color: ${(props) => props.theme.primary90};
-    text-align: center;
-    /* Texto corrido/Texto corrido semibold */
-
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 160%; /* 25.6px */
+    width: 100%;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: left;
   }
+`
+
+export const HeaderModal = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
 `
 
 export const ButtonArea = styled.div`
@@ -70,6 +74,5 @@ export const ButtonArea = styled.div`
   display: flex;
   justify-content: end;
   align-items: center;
-  margin: 32px 0;
   gap: 16px;
 `

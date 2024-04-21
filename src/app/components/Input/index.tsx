@@ -1,27 +1,22 @@
 import { InputHTMLAttributes, forwardRef } from "react"
-import {
-  Error,
-  FieldContainer,
-  InputContainer,
-  InputField,
-  Title,
-} from "./styles"
+import { Error, InputContainer, InputField, Required, Title } from "./styles"
 
-type InputLoginProps = InputHTMLAttributes<HTMLInputElement> & {
+type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   label: string
   error?: string
   type?: "text" | "password" | "email" | "number" | "tel" | "date"
+  isRequired?: boolean
 }
 
-export const InputLogin = forwardRef<HTMLInputElement, InputLoginProps>(
-  ({ label, error, type = "text", ...rest }, ref) => {
+export const Input = forwardRef<HTMLInputElement, InputProps>(
+  ({ label, error, type = "text", isRequired = false, ...rest }, ref) => {
     return (
       <>
         <InputContainer>
-          <Title>{label}</Title>
-          <FieldContainer>
-            <InputField type={type} {...rest} ref={ref} />
-          </FieldContainer>
+          <Title>
+            {label}: {isRequired ? <Required>*</Required> : null}
+          </Title>
+          <InputField type={type} {...rest} ref={ref} />
         </InputContainer>
         {error && <Error>{error}</Error>}
       </>
@@ -29,4 +24,4 @@ export const InputLogin = forwardRef<HTMLInputElement, InputLoginProps>(
   }
 )
 
-InputLogin.displayName = "InputLogin"
+Input.displayName = "Input"

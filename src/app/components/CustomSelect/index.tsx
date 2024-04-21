@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from "react"
+
+import { Required } from "../Input/styles"
 import {
   DropdownButtonInput,
   DropdownItemInput,
   DropdownListInput,
   DropdownWrapperInput,
-  IconSelectInput,
   Title,
 } from "./styles"
 
@@ -20,7 +21,7 @@ interface CustomSelectProps {
   defaultValue?: Option
   allowClear?: boolean
   label?: string
-  textAfterOption?: string
+  isRequired?: boolean
 }
 
 export function CustomSelect({
@@ -29,11 +30,10 @@ export function CustomSelect({
   value,
   onChange,
   disabled,
-  icon,
-  placeholder = "Selecione uma opção",
+  placeholder = "Selecione",
   defaultValue,
   allowClear = true,
-  textAfterOption = "",
+  isRequired = false,
 }: CustomSelectProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [selectedOption, setSelectedOption] = useState<Option | null>(
@@ -76,7 +76,9 @@ export function CustomSelect({
 
   return (
     <DropdownWrapperInput ref={modalRef}>
-      <Title>{label}</Title>
+      <Title>
+        {label}: {isRequired ? <Required>*</Required> : null}
+      </Title>
       <DropdownButtonInput
         isDisabled={disabled}
         disabled={disabled}
@@ -84,12 +86,9 @@ export function CustomSelect({
         onClick={toggleDropdown}
         isActive={isOpen}
       >
-        {icon && (
-          <IconSelectInput hasValue={!!selectedOption}>{icon}</IconSelectInput>
-        )}
         <span>
           {selectedOption?.label || placeholder}
-          {textAfterOption}
+          <div>V</div>
         </span>
         <DropdownListInput isOpen={isOpen}>
           {allowClear && selectedOption && (
@@ -100,7 +99,6 @@ export function CustomSelect({
           {options.map((option, index) => (
             <DropdownItemInput key={index} onClick={() => selectOption(option)}>
               {option.label}
-              {textAfterOption}
             </DropdownItemInput>
           ))}
         </DropdownListInput>

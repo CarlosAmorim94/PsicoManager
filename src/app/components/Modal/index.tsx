@@ -2,10 +2,13 @@
 import { useWindowSize } from "@/app/utils/Hooks/useWindowSize"
 import { FC, useEffect } from "react"
 import { CustomButton } from "../CustomButton"
+import { CustomSelect } from "../CustomSelect"
+import { Input } from "../Input"
 import {
   ButtonArea,
   CloseModal,
   Container,
+  HeaderModal,
   Overlay,
   TitleInformation,
 } from "./styles"
@@ -40,10 +43,23 @@ export const Modal: FC<ModalProps> = ({ isOpen, setIsOpen }) => {
     <Overlay isOpen={isOpen}>
       <Container>
         <TitleInformation>
-          <h2>Ativar o PsicoBank</h2>
-          <CloseModal type="button" onClick={() => setIsOpen(false)}>
-            X
-          </CloseModal>
+          <HeaderModal>
+            <h2>Ativar o PsicoBank</h2>
+            <CloseModal type="button" onClick={() => setIsOpen(false)}>
+              X
+            </CloseModal>
+          </HeaderModal>
+          <div>Status</div>
+          <h3>Preencha os itens a seguir para configurar o PsicoBank</h3>
+          <div>Advertência</div>
+          <Input label={"Profissional"} />
+          <CustomSelect
+            options={[
+              { value: "1", label: "1" },
+              { value: "2", label: "2" },
+            ]}
+            onChange={(e) => console.log(e)}
+          />
         </TitleInformation>
         MODAAAAAAAAAAAAAAAAL
         <ButtonArea>
