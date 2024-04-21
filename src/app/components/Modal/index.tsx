@@ -3,6 +3,8 @@ import { useWindowSize } from "@/app/utils/Hooks/useWindowSize"
 import { FC, useEffect, useState } from "react"
 import { Advisement } from "../Advisement"
 import { CustomButton } from "../CustomButton"
+import { CustomSelect } from "../CustomSelect"
+import { CloseX } from "../SVG/CloseX"
 import { SteepsStatus } from "../SteepsStatus"
 import {
   ButtonArea,
@@ -49,12 +51,20 @@ export const Modal: FC<ModalProps> = ({ isOpen, setIsOpen }) => {
           <HeaderModal>
             <h2>Ativar o PsicoBank</h2>
             <CloseModal type="button" onClick={() => setIsOpen(false)}>
-              X
+              <CloseX />
             </CloseModal>
           </HeaderModal>
           <SteepsStatus steep={steep} />
           <h3>Preencha os itens a seguir para configurar o PsicoBank</h3>
           {steep === "userData" && <Advisement />}
+          <CustomSelect
+            label="Profissional"
+            options={[{ label: "João Sila", value: "João Silva" }]}
+            isRequired
+            disabled
+            placeholder="João Silva"
+            onChange={(e) => console.log(e)}
+          />
         </TitleInformation>
         <div>
           {steep === "userData" && <div>User Data</div>}
@@ -72,7 +82,7 @@ export const Modal: FC<ModalProps> = ({ isOpen, setIsOpen }) => {
             type={"button"}
             variant="primary"
             label={"Confirmar"}
-            onClick={() => {}}
+            onClick={() => setSteep("messages")}
           />
         </ButtonArea>
       </Container>

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 
 import { Required } from "../Input/styles"
+import { ArrowDown } from "../SVG/ArrowDown"
 import {
   DropdownButtonInput,
   DropdownItemInput,
@@ -88,7 +89,7 @@ export function CustomSelect({
       >
         <span>
           {selectedOption?.label || placeholder}
-          <div>V</div>
+          <ArrowDown />
         </span>
         <DropdownListInput isOpen={isOpen}>
           {allowClear && selectedOption && (

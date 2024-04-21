@@ -24,7 +24,7 @@ export const DropdownButtonInput = styled.button<DropdownButtonProps>`
   align-items: center;
   cursor: pointer;
   gap: 4px;
-  background: transparent;
+  background: ${(props) => (props.isDisabled ? "#CCD1D3" : "#fff")};
   width: 100%;
   border: 1px solid rgba(204, 209, 211, 1);
   padding: 4px 16px 4px 16px;
@@ -39,8 +39,14 @@ export const DropdownButtonInput = styled.button<DropdownButtonProps>`
     width: 100%;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 
-    opacity: ${(props) => (props.isDisabled ? "0.6" : "1")};
+    svg {
+      width: 12px;
+      height: 12px;
+      rotate: ${(props) => (props.isActive ? "180deg" : `0`)};
+      margin-left: auto;
+    }
   }
 
   @media (max-width: 768px) {
@@ -79,7 +85,6 @@ export const DropdownItemInput = styled.li`
 export const Title = styled.label`
   font-size: 14px;
   font-style: normal;
-  font-weight: 700;
   line-height: normal;
   display: flex;
   flex-direction: row;

@@ -40,12 +40,12 @@ export const InputField = styled.input<{ $variant?: "primary" | "secondary" }>`
   text-align: left;
 
   &:disabled {
-    opacity: 0.5;
+    background: #ccd1d3;
     cursor: not-allowed;
   }
 
   &:read-only {
-    opacity: 0.5;
+    background: #ccd1d3;
     cursor: not-allowed;
   }
 
