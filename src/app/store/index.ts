@@ -1,11 +1,12 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit"
-
-const modalSlice = createSlice({
-  name: "modal",
-  initialState: {},
-  reducers: {},
-})
+import { configureStore } from "@reduxjs/toolkit"
+import { TypedUseSelectorHook, useSelector } from "react-redux"
+import { modalReducer } from "./slices/modalInfo"
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    modal: modalReducer,
+  },
 })
+
+export type RootState = ReturnType<typeof store.getState>
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector

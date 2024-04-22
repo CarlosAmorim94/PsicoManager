@@ -91,3 +91,10 @@ export const Title = styled.label`
   align-items: center;
   gap: 4px;
 `
+export const Error = styled.p`
+  color: red;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+`

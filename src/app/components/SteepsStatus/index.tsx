@@ -7,7 +7,7 @@ import { StatusBall } from "../SVG/StatusBall"
 import { HorizontalLine, InternalContainer, Steeps } from "./styles"
 
 interface SteepsStatusProps {
-  steep: SteepProps
+  steep: SteepProps | string
 }
 
 export const SteepsStatus: FC<SteepsStatusProps> = ({ steep = "userData" }) => {

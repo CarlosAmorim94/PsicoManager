@@ -7,6 +7,7 @@ import {
   DropdownItemInput,
   DropdownListInput,
   DropdownWrapperInput,
+  Error,
   Title,
 } from "./styles"
 
@@ -23,6 +24,7 @@ interface CustomSelectProps {
   allowClear?: boolean
   label?: string
   isRequired?: boolean
+  error?: string
 }
 
 export function CustomSelect({
@@ -35,6 +37,7 @@ export function CustomSelect({
   defaultValue,
   allowClear = true,
   isRequired = false,
+  error,
 }: CustomSelectProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [selectedOption, setSelectedOption] = useState<Option | null>(
@@ -104,6 +107,7 @@ export function CustomSelect({
           ))}
         </DropdownListInput>
       </DropdownButtonInput>
+      {error && <Error>{error}</Error>}
     </DropdownWrapperInput>
   )
 }
